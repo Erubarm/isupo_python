@@ -24,7 +24,7 @@ class Car:
         self.engine_power = engine_power
         self.max_fuel = max_fuel
         self.consumption = consumption
-        self.now_fuel = now_fuel
+        self.now_fuel: float = now_fuel
 
     def set_color(self, color): # Устанавливаем значение цвета
         self.color = color
@@ -46,19 +46,20 @@ class Car:
     def get_consumption(self): # какой расход топлива на 1км
         return self.consumption
 
-    def get_refill(self):
+    def get_refill(self): # На сколько литров можно заправиться
         return self.max_fuel - self.now_fuel
 
-    def refill(self, fuel):
+    def refill(self, fuel): # Функция заправки автомобиля и условия можно ли заправить
         if self.max_fuel >= self.now_fuel:
             if fuel > c.get_refill():
                 print('Нельзя заправиться больше, чем можешь')
             else:
-                return self.now_fuel + fuel
+                self.now_fuel += fuel
+                return self.now_fuel
         else:
             print('Дозаправка не требуется')
 
-    def true_distance(self):
+    def true_distance(self): # Сколько можно проехать км при данном баке
         return self.now_fuel / self.consumption
 
 
@@ -78,7 +79,8 @@ print(f'Машина перекрашенна в {c.get_color()}')
 print(f'Максимальная вместимость бака {c.get_max_fuel()} литров')
 print(f'В баке сейчас {c.now_fuel} литров')
 print(f'Можно заправиться на {c.get_refill()} литров')
-print(c.refill(5))
+c.refill(6)
+print(f'Можно проехать {c.true_distance()}')
 
 
 
