@@ -25,10 +25,11 @@ class Car:
         self.max_tank = max_tank
         self.consumption = consumption
 
-    def set_color(self):
-        self.color = input()
+    def set_color(self, color):
+        self.color = color
 
 c = Car('White', 555, 11, 7)
+print(c.set_color('Orange'))
 
 
 
