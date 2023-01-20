@@ -82,6 +82,47 @@ print(f'Можно заправиться на {c.get_refill()} литров')
 c.refill(6)
 print(f'Можно проехать {c.true_distance()}')
 
+def test_init_1():
+    Car(color='white',
+        engine_power=90,
+        max_fuel=50,
+        consumption=9.3,
+        now_fuel=0)
+
+
+def test_init_2():
+    Car(color='white')
+
+
+def test_color_1():
+    c = Car(color='white',
+            engine_power=90,
+            max_fuel=50,
+            consumption=9.3,
+            now_fuel=0)
+    assert c.get_color() == 'white'
+
+
+def test_color_2():
+    c = Car(color='white',
+            engine_power=90,
+            max_fuel=50,
+            consumption=9.3,
+            now_fuel=0)
+    assert c.get_color() == 'white'
+    c.set_color('red')
+
+
+def test_color_3():
+    c = Car(color='white',
+            engine_power=90,
+            max_fuel=50,
+            consumption=9.3,
+            now_fuel=0)
+    assert c.get_color() == 'white'
+    c.set_color('red')
+
+    assert c.get_color() == 'red'
 
 
 
